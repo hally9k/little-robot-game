@@ -37,4 +37,7 @@ export const right = () => {
 
 export const report = (state) => {
     console.log(`Output: ${state.get('x')}, ${state.get('y')}, ${state.get('direction')}`)
+    return {
+        type: REPORT
+    };
 };
