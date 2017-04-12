@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 import {
     COMMANDS,
     DIRECTIONS
@@ -7,7 +7,7 @@ const [ PLACE, MOVE, LEFT, RIGHT, REPORT ] = COMMANDS;
 const [ NORTH, EAST, SOUTH, WEST ] = DIRECTIONS;
 
 // Initial state object
-const INITIAL_STATE = Immutable.Map({
+const INITIAL_STATE = Map({
     onTable: false,
     x: null,
     y: null,

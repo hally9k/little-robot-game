@@ -2,7 +2,11 @@ import RxNode from 'rx-node';
 import { createStore } from 'redux';
 import * as actions from './actions';
 import reducers from './reducers';
-import validateInput from './validator';
+import {
+    validateInput,
+    validateMoveCommand,
+    validatePlaceCommand
+} from './validators';
 import { COMMANDS } from './constants';
 
 const [ PLACE, MOVE, LEFT, RIGHT, REPORT ] = COMMANDS;
@@ -18,11 +22,15 @@ const subscription = RxNode.fromStream(process.stdin, 'end')
         if(validateInput(params, state)) {
             switch(params[0]) {
                 case PLACE:
-                    const [ command, x, y, direction ] = params;
-                    store.dispatch(actions.place(x, y, direction));
+                    if(validatePlaceCommand(params)) {
+                        const [ command, x, y, direction ] = params;
+                        store.dispatch(actions.place(x, y, direction));
+                    }
                     break;
                 case MOVE:
-                    store.dispatch(actions.move());
+                    if(validateMoveCommand(state)) {
+                        store.dispatch(actions.move());
+                    }
                     break;
                 case LEFT:
                     store.dispatch(actions.left());

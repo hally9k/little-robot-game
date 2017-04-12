@@ -5,3 +5,5 @@
 - `yarn setup` (This will install Node.js, NPM and Yarn. Skip if you are already equipped ⚔️)
 - `yarn install`
 - `yarn start`
+- `yarn debug` to debug and paste the output link into a chrome browser tab.
+- `yarn test` to run the tests.
