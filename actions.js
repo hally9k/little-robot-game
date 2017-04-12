@@ -6,13 +6,13 @@ export const RIGHT = 'RIGHT';
 export const REPORT = 'REPORT';
 
 // Action Creators
-export const place = (x, y, direction) => {
+export const place = (x, y, facing) => {
     return {
         type: PLACE,
         payload: {
             x,
             y,
-            direction
+            facing
         }
     };
 };
@@ -36,7 +36,7 @@ export const right = () => {
 };
 
 export const report = (state) => {
-    console.log(`Output: ${state.get('x')}, ${state.get('y')}, ${state.get('direction')}`)
+    console.log(`Output: ${state.get('x')},${state.get('y')},${state.get('facing')}`)
     return {
         type: REPORT
     };

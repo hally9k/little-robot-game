@@ -102,7 +102,7 @@ describe('VALIDATORS:', () => {
             ];
             expect(validatePlaceCommand(params, state)).to.be.false;
         });
-        it('should reject an invalid direction.', () => {
+        it('should reject an invalid facing.', () => {
             const params = [
                 'PLACE',
                 '2',
@@ -114,7 +114,7 @@ describe('VALIDATORS:', () => {
     });
 
 
-    describe('MOVE VALIDATOR::', () => {
+    describe('MOVE VALIDATOR:', () => {
         beforeEach(() => {
             moveState = getActiveState();
         })
@@ -122,7 +122,7 @@ describe('VALIDATORS:', () => {
             expect(
                 validateMoveCommand(
                     moveState
-                        .set('direction', 'NORTH')
+                        .set('facing', 'NORTH')
                         .set('y', 4)
                 )
             ).to.be.false;
@@ -131,7 +131,7 @@ describe('VALIDATORS:', () => {
             expect(
                 validateMoveCommand(
                     moveState
-                        .set('direction', 'EAST')
+                        .set('facing', 'EAST')
                         .set('x', 4)
                 )
             ).to.be.false;
@@ -140,7 +140,7 @@ describe('VALIDATORS:', () => {
             expect(
                 validateMoveCommand(
                     moveState
-                        .set('direction', 'SOUTH')
+                        .set('facing', 'SOUTH')
                         .set('y', 0)
                 )
             ).to.be.false;
@@ -149,7 +149,7 @@ describe('VALIDATORS:', () => {
             expect(
                 validateMoveCommand(
                     moveState
-                        .set('direction', 'WEST')
+                        .set('facing', 'WEST')
                         .set('x', 0)
                 )
             ).to.be.false;

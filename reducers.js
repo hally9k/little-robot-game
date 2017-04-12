@@ -11,7 +11,7 @@ const INITIAL_STATE = Map({
     onTable: false,
     x: null,
     y: null,
-    direction: null
+    facing: null
 });
 
 // Reducers
@@ -34,19 +34,19 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 export const placeReducer = (state, action) => {
-    const { x, y, direction } = action.payload;
+    const { x, y, facing } = action.payload;
     return state
             .set('x', parseInt(x))
             .set('y', parseInt(y))
-            .set('direction', direction)
+            .set('facing', facing)
             .set('onTable', true);
 }
 
 export const moveReducer = (state, action) => {
     const x = state.get('x');
     const y = state.get('y');
-    const direction = state.get('direction');
-    switch(direction) {
+    const facing = state.get('facing');
+    switch(facing) {
         case NORTH:
             return state.set('y', y + 1);
         case EAST:
@@ -61,13 +61,13 @@ export const moveReducer = (state, action) => {
 }
 
 export const leftReducer = (state, action) => {
-    const direction = state.get('direction');
-    let index = DIRECTIONS.indexOf(direction);
-    return state.set('direction', DIRECTIONS[index === 0 ? 3 : --index]);
+    const facing = state.get('facing');
+    let index = DIRECTIONS.indexOf(facing);
+    return state.set('facing', DIRECTIONS[index === 0 ? 3 : --index]);
 }
 
 export const rightReducer = (state, action) => {
-    const direction = state.get('direction');
-    let index = DIRECTIONS.indexOf(direction);
-    return state.set('direction', DIRECTIONS[index === 3 ? 0 : ++index]);
+    const facing = state.get('facing');
+    let index = DIRECTIONS.indexOf(facing);
+    return state.set('facing', DIRECTIONS[index === 3 ? 0 : ++index]);
 }

@@ -36,7 +36,7 @@ export function validatePlaceCommand(params) {
 
     const x = parseInt(params[1]);
     const y = parseInt(params[2]);
-    const direction = params[3];
+    const facing = params[3];
 
     if(isNaN(x) || x < 0 || x > 4) {
         errors.push(ERRORS.invalidX(x));
@@ -44,8 +44,8 @@ export function validatePlaceCommand(params) {
     if(isNaN(y) || y < 0 || y > 4) {
         errors.push(ERRORS.invalidY(y));
     }
-    if(!DIRECTIONS.includes(direction)) {
-        errors.push(ERRORS.invalidDirection(direction));
+    if(!DIRECTIONS.includes(facing)) {
+        errors.push(ERRORS.invalidDirection(facing));
     }
 
     errors.forEach((error) => { console.log(error) });
@@ -57,19 +57,19 @@ export function validateMoveCommand(state) {
 
     const x = state.get('x');
     const y = state.get('y');
-    const direction = state.get('direction');
-    switch(direction) {
+    const facing = state.get('facing');
+    switch(facing) {
         case NORTH:
-            if(y >= 4) errors.push(ERRORS.invalidMove(direction));
+            if(y >= 4) errors.push(ERRORS.invalidMove(facing));
             break;
         case EAST:
-            if(x >= 4) errors.push(ERRORS.invalidMove(direction));
+            if(x >= 4) errors.push(ERRORS.invalidMove(facing));
             break;
         case SOUTH:
-            if(y <= 0) errors.push(ERRORS.invalidMove(direction));
+            if(y <= 0) errors.push(ERRORS.invalidMove(facing));
             break;
         case WEST:
-            if(x <= 0) errors.push(ERRORS.invalidMove(direction));
+            if(x <= 0) errors.push(ERRORS.invalidMove(facing));
             break;
         default:
             console.log(ERRORS.fatalApplicationState(state));
