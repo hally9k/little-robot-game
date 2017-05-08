@@ -7,7 +7,7 @@ import {
     validateInput,
     validateMoveCommand,
     validatePlaceCommand
-} from '../validators';
+} from '../src/validators';
 
 const state = getInitialState();
 let moveState;

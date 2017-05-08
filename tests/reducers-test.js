@@ -4,7 +4,7 @@ import {
     getInitialState
 } from './mocks';
 import { Map } from 'immutable';
-import reducers from '../reducers';
+import reducers from '../src/reducers';
 
 const state = getInitialState();
 const activeState = getActiveState();
